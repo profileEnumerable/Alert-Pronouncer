@@ -9,7 +9,6 @@ namespace AlearPronuncer2
         {
             var builder = MauiApp.CreateBuilder();
 
-            builder.Services.AddTransient<IMessagePronuncer, MessagePronuncer>();
 
             builder
                 .UseMauiApp<App>()
@@ -21,7 +20,9 @@ namespace AlearPronuncer2
 
 #if DEBUG
     		builder.Logging.AddDebug();
-#endif
+#endif      
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<IMessagePronuncer, MessagePronuncer>();
 
             return builder.Build();
         }
